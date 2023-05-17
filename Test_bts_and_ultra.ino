@@ -16,7 +16,7 @@ void setup () {
   pinMode(LED_green, OUTPUT);
   pinMode(LED_redEsq, OUTPUT);
   pinMode(LED_redDir, OUTPUT);
-  pinMode(BTN_f4, INPUT_PULLUP);
+  pinMode(BTN_f4, INPUT);
   Serial.begin(1200);
 }
 
