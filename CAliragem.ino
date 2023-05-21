@@ -29,6 +29,7 @@ void setup() {
   pinMode(LED_redDir, OUTPUT);
   pinMode(LED_green, OUTPUT);
   pinMode(BTN_f4, INPUT_PULLUP);
+  
   pinMode(sen1, INPUT);
   pinMode(sen2, INPUT);
   pinMode(sen3, INPUT);
