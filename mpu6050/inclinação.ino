@@ -10,7 +10,6 @@
    2. Calcula a inclinação total usando a hipotenusa de X e Y.
    3. Ajusta a velocidade dos motores proporcionalmente, entre `MAX_SPEED` e `MIN_SPEED`.
    4. Aplica a velocidade usando PWM nos pinos dos motores.
-
 */
 
 #include <Wire.h>
@@ -74,7 +73,6 @@ void loop() {
     delay(50);
 }
 
-// Função para mover o robô para frente com velocidade ajustável
 void moveForward(int velocidade) {
     analogWrite(MOTOR_LEFT_FORWARD, velocidade);
     analogWrite(MOTOR_LEFT_BACKWARD, 0);
@@ -82,7 +80,6 @@ void moveForward(int velocidade) {
     analogWrite(MOTOR_RIGHT_BACKWARD, 0);
 }
 
-// Função para parar os motores
 void stopMotors() {
     analogWrite(MOTOR_LEFT_FORWARD, 0);
     analogWrite(MOTOR_LEFT_BACKWARD, 0);
