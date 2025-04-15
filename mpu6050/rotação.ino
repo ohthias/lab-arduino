@@ -74,7 +74,6 @@ void loop() {
     delay(50);
 }
 
-// Função para girar no próprio eixo
 void rotateRobot() {
     analogRead(MOTOR_LEFT_FORWARD, velocidade);
     analogRead(MOTOR_LEFT_BACKWARD, 0);
@@ -82,7 +81,6 @@ void rotateRobot() {
     analogRead(MOTOR_RIGHT_BACKWARD, velocidade);
 }
 
-// Função para parar os motores
 void stopMotors() {
     analogRead(MOTOR_LEFT_FORWARD, 0);
     analogRead(MOTOR_LEFT_BACKWARD, 0);

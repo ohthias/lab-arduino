@@ -11,32 +11,24 @@
   - Se o sensor frontal medir uma distância dentro de um valor pré-definido (`alvo`), o LED verde acende.
   - Se a distância do sensor lateral esquerdo for menor que o valor `alvo`, o LED vermelho esquerdo acende. Se o sensor lateral direito for o que está mais próximo do alvo, o LED vermelho direito acende.
   - Caso a distância frontal seja muito curta (< 5 cm), os LEDs vermelhos piscam alternadamente para indicar proximidade.
-
-  O código também inclui verificações para garantir que o sistema só responda a um novo estado do botão quando ele for solto, utilizando uma pequena pausa (`delay(100)`).
-
-  A comunicação serial é usada para imprimir as distâncias medidas para depuração.
-  
-  Esse código é útil para sistemas de robôs simples com sensores ultrassônicos para navegação ou detecção de obstáculos.
 */
 
 #include <HCSR04.h>
 
-// Definição dos sensores
-UltraSonicDistanceSensor sensorFrente(45, 44);
-UltraSonicDistanceSensor sensorEsq(49, 48);
-UltraSonicDistanceSensor sensorDir(46, 47);
+UltraSonicDistanceSensor sensorFrente(2, 3);
+UltraSonicDistanceSensor sensorEsq(4, 5);
+UltraSonicDistanceSensor sensorDir(6, 7);
 
-// Definição das variáveis de distâncias
 int distancia, distanciaLatEsq, distanciaLatDir;
 int alvo = 10;
 
 // Definição dos LEDs
-int LED_green = 9;
-int LED_redEsq = 8;
-int LED_redDir = 10;
+int LED_green = 10;
+int LED_redEsq = 11;
+int LED_redDir = 12;
 
 // Definição do botão
-int BTN_f4 = 35;
+int BTN_f4 = 8;
 int estadoBtn = 0;
 
 void setup() {
@@ -53,7 +45,6 @@ void loop() {
   distanciaLatDir = sensorDir.measureDistanceCm();
   estadoBtn = digitalRead(BTN_f4);
   
-  // Quando o botão for pressionado
   if (estadoBtn == HIGH) {
     digitalWrite(LED_green, HIGH);
     digitalWrite(LED_redDir, HIGH);
@@ -66,20 +57,16 @@ void loop() {
     return;
   }
 
-  // Quando o botão não estiver pressionado
   if (estadoBtn == LOW) {
-    // Se o sensor frontal medir uma distância menor que o valor alvo
     if (distancia <= alvo && distancia > 5) {
-      Serial.println(distancia); // Exibe a distância medida
+      Serial.println(distancia);
       digitalWrite(LED_green, HIGH);
 
-      // Verifica se o sensor esquerdo está dentro do alvo
       if (distanciaLatEsq <= alvo && distanciaLatEsq > 4) {
         Serial.print(distanciaLatEsq);
         digitalWrite(LED_redEsq, HIGH);
         delay(100);
       } 
-      // Verifica se o sensor direito está dentro do alvo
       else if (distanciaLatDir <= alvo && distanciaLatDir > 4) {
         Serial.print(distanciaLatDir);
         digitalWrite(LED_redDir, HIGH);
