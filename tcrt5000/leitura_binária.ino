@@ -37,7 +37,7 @@ int leituraSensor(){
         } else {
             if (leitura[i] > pretoCorte) {
                 caso = 0;
-                i = 7;
+                break;
             } else {
                 ligado = 0;
             }
