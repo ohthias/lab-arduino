@@ -50,7 +50,7 @@ void loop () {
       return;
   }
 
-  if (estadoBtn == HIGH); {
+  if (estadoBtn == HIGH) {
   
     if (distace <= alvo && distace > 5) {
       Serial.println(distace);
