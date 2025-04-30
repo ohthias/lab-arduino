@@ -10,7 +10,7 @@ void setup() {
     Serial.println("Sensor encontrado");
   } 
   else{
-    Serial.println("Sensor nÃ£o encontrado, cheque suas conecÃ§Ãµes.");
+    Serial.println("Sensor não encontrado, cheque suas conexões.");
     while (1);
   }
 }
