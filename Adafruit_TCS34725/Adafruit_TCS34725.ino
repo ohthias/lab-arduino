@@ -3,29 +3,23 @@
 
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS34725_GAIN_1X);
 
-void setup() 
-{
+void setup() {
   Serial.begin(9600);
 
-  if (tcs.begin())//Se conseguirmos iniciar o sensor significa que ele estÃ¡ conectado 
-  {
+  if (tcs.begin()) {
     Serial.println("Sensor encontrado");
   } 
-  else//caso contrÃ¡rio ele nao estÃ¡ conectado 
-  {
+  else{
     Serial.println("Sensor nÃ£o encontrado, cheque suas conecÃ§Ãµes.");
     while (1);
   }
-
 }
 
-void loop() 
-{
+void loop() {
   uint16_t r, g, b, c;
 
-  tcs.getRawData(&r, &g, &b, &c);//Pega os valores "crus" do sensor referentes ao Vermelho(r), Verde(g), Azul(b) e da Claridade(c).
+  tcs.getRawData(&r, &g, &b, &c);
 
-  //Agora vamos printar Os valores referentes a cada cor.
   Serial.print("Vermelho : "); Serial.print(r, DEC); Serial.print(" ");
   Serial.print("Verde    : "); Serial.print(g, DEC); Serial.print(" ");
   Serial.print("Azul     : "); Serial.print(b, DEC); Serial.print(" ");
